@@ -49,7 +49,7 @@ def check_wallet_balance() -> int:
     return client.WalletBalance(client.WalletBalanceRequest()).total_balance
 
 
-@mcp.tool
+@mcp.tool()
 def get_public_info() -> str:
     """GetInfo returns general information concerning the lightning node
      including its identity pubkey, alias, the chains it is connected to,
