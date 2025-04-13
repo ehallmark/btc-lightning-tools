@@ -3,7 +3,12 @@ from mcp.server.fastmcp import FastMCP
 from lightning_client import LightningClient
 from google.protobuf.json_format import MessageToJson
 import sys
+import dotenv
 import base64
+import os
+
+
+dotenv.load_dotenv()
 
 
 # Create an MCP server
@@ -27,6 +32,8 @@ def create_server(client: LightningClient):
     @mcp.tool()
     def check_invoice_is_settled(r_hash: bytes) -> bool:
         """Check if an invoice is settled."""
+        if isinstance(r_hash, str):
+            r_hash = r_hash.encode('utf-8')
         if len(r_hash) != 32:
             r_hash = base64.b64decode(r_hash)
         return client.LookupInvoice(client.PaymentHash(r_hash=r_hash)).settled
@@ -54,9 +61,13 @@ if __name__ == "__main__":
             cert_path=sys.argv[2],
             macaroon_path=sys.argv[3]
         )
-
     else:
-        raise RuntimeError("Usage: python server.py <rpc_port> <cert_path> <macaroon_path>")
+        print('Using default values for rpc_port, cert_path, and macaroon_path')
+        client = LightningClient(
+            rpc_port=int(os.environ['LIGHTNING_RPC_PORT']),
+            cert_path=os.environ['LIGHTNING_CERT_PATH'],
+            macaroon_path=os.environ['LIGHTNING_MACAROON_PATH']
+        )
 
     app = create_server(client)
     app.run(transport='stdio')
