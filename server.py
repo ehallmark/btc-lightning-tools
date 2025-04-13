@@ -55,3 +55,8 @@ def get_public_info() -> str:
      including its identity pubkey, alias, the chains it is connected to,
      and information concerning the number of open+pending channels."""
     return MessageToJson(client.GetInfo(client.GetInfoRequest()))
+
+
+if __name__ == "__main__":
+    # Initialize and run the server
+    mcp.run(transport='stdio')
