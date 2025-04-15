@@ -2,19 +2,11 @@
 from mcp.server.fastmcp import FastMCP
 from lightning_client import LightningClient
 from google.protobuf.json_format import MessageToJson
-import sys
-import dotenv
 import base64
-import os
-
-
-dotenv.load_dotenv()
 
 
 # Create an MCP server
-def create_server(client: LightningClient):
-    mcp = FastMCP("lightning-tools")
-
+def create_server(mcp: FastMCP, client: LightningClient):
     @mcp.tool()
     def pay_invoice(payment_request: str) -> dict:
         """Pay a payment request."""
@@ -52,22 +44,3 @@ def create_server(client: LightningClient):
 
     return mcp
 
-
-if __name__ == "__main__":
-    # Initialize and run the server
-    if len(sys.argv) > 3:
-        client = LightningClient(
-            rpc_port=int(sys.argv[1]),
-            cert_path=sys.argv[2],
-            macaroon_path=sys.argv[3]
-        )
-    else:
-        print('Using default values for rpc_port, cert_path, and macaroon_path')
-        client = LightningClient(
-            rpc_port=int(os.environ['LIGHTNING_RPC_PORT']),
-            cert_path=os.environ['LIGHTNING_CERT_PATH'],
-            macaroon_path=os.environ['LIGHTNING_MACAROON_PATH']
-        )
-
-    app = create_server(client)
-    app.run(transport='stdio')
