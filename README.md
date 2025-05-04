@@ -1,6 +1,6 @@
 # MCP Server for Bitcoin Lightning
 
-This repository utilises https://github.com/ehallmark/btc-lightning-client for communicating with a local Lightning Network Daemon (`lnd`) and wraps it in a Model Context Protocol (MCP) server. This MCP server can be used with Agentic systems to interact with the Lightning Network.
+This repository uses https://github.com/ehallmark/btc-lightning-client for communicating with a local Lightning Network Daemon (`lnd`) and wraps it in a Model Context Protocol (MCP) server. This MCP server can be used with Agentic systems to interact with the Lightning Network.
 
 
 

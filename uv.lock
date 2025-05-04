@@ -237,16 +237,16 @@ wheels = [
 
 [[package]]
 name = "lightning-client-mcp"
-version = "0.0.1"
+version = "0.0.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "grpcio" },
     { name = "grpcio-tools" },
     { name = "protobuf" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/23/6b/124f5f6e4ff62acb17331ac048fb047446462938920e885d453d8b5a5047/lightning_client_mcp-0.0.1.tar.gz", hash = "sha256:45f4c17a8a44dad0689d1ebb017a25053928163a652b4e3fd445f0b855c4c33a", size = 38615 }
+sdist = { url = "https://files.pythonhosted.org/packages/c9/a7/7bad7382a432d20e562883ac48ee5fed133869007efec05d9ade798b6ab1/lightning_client_mcp-0.0.3.tar.gz", hash = "sha256:ad183863c20ea1ddc44605232d9318653221523ca67734445b87031436b0677f", size = 49544 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/6a/2293cd45c1bad9c9faa13fbd351b27c928e29ecde260f97ea695784362b7/lightning_client_mcp-0.0.1-py3-none-any.whl", hash = "sha256:b17313cbc1f4384bc88c4f27e621275dc0ae9644976b8d81af3d546756cccd38", size = 39371 },
+    { url = "https://files.pythonhosted.org/packages/02/2f/652e2bcce93dbf9b7e9ec9ffbbea71227e4e7810e4754a18f320b962fdbf/lightning_client_mcp-0.0.3-py3-none-any.whl", hash = "sha256:4c7e09e2aa8aa3065b3085ac5ae8adf2e06ca12f11fc90f365acc582a9bb3a97", size = 50096 },
 ]
 
 [[package]]
@@ -264,7 +264,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.115.12" },
-    { name = "lightning-client-mcp", specifier = ">=0.0.1" },
+    { name = "lightning-client-mcp", specifier = "==0.0.3" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.6.0" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "uvicorn", specifier = ">=0.34.0" },
